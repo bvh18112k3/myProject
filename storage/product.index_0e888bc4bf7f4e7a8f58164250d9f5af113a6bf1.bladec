@@ -1,0 +1,47 @@
+<?php $_shouldextend[1]=1; ?>
+<?php $this->startSection('content'); ?>
+ <table border="1" class="table">
+ <thead>
+ <th>ID</th>
+ <th>Tên sản phẩm</th>
+ <th>Độ phân giải</th>
+ <th>Kích thước màn hình</th>
+ <th>Độ sáng tối đa</th>
+ <th>Camera sau</th>
+ <th>Camera trước</th>
+ <th>Hệ điều hành </th>
+ <th>Chip xử lý (CPU)</th>
+ <th>Chip đồ họa</th>
+ <th>Pin Sạc</th>
+ <th>Mô tả</th>
+ <th colspan="2">Action</th>
+ </thead>
+ <tbody>
+ <?php $__currentLoopData = $products; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $p): $loop = $this->incrementLoopIndices();  ?>
+ <tr>
+ <td><?php echo \htmlentities($p->id??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($p->product_name??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($p->screen_resolution??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($p->screen_width??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($p->maximum_brightness??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($p->rear_camera??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($p->front_camera??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($p->HDH??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($p->CPU??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($p->GPU??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($p->pin_sac??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($p->description??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <th>
+ <a href="<?php echo \htmlentities(route('updateProduct/'.$p->id)??'', ENT_QUOTES, 'UTF-8', false); ?>">Sửa</a><br>
+ </th>
+ <th><a href="<?php echo \htmlentities(route('deleteProduct/'.$p->id)??'', ENT_QUOTES, 'UTF-8', false); ?>">Xóa</a></th>
+ </tr>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </tbody>
+
+ </table>
+ <a href="<?php echo \htmlentities(route('addProduct')??'', ENT_QUOTES, 'UTF-8', false); ?>"><button>Thêm mới</button></a>
+<?php $this->stopSection(); ?>
+
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('layout.main'); } ?>
